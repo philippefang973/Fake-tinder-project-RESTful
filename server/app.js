@@ -111,7 +111,7 @@ serv.get("/profil",function(req,res) {
   });
 });
 
-serv.post('/infos',function(req,res) {
+serv.put('/infos',function(req,res) {
   if (!req.session.user) return res.redirect("/");
   var code = "update user set nom='"+req.body.nom+"', prenom='"+req.body.prenom+"',sexe='"+req.body.sexe+"',naissance='"+req.body.naissance+"',telephone='"
   +req.body.telephone+"' where pseudo='"+req.session.user.pseudo+"'";
@@ -126,7 +126,7 @@ serv.post('/infos',function(req,res) {
   });
 });
 
-serv.post('/password',function(req,res) {
+serv.put('/password',function(req,res) {
   if (!req.session.user) return res.redirect("/");
   var code = "select mdp from user where pseudo='"+req.session.user.pseudo+"'";
   connection.query(code, function(err,row,fields){
@@ -142,7 +142,7 @@ serv.post('/password',function(req,res) {
 });
 
 
-serv.post("/description",function(req,res){
+serv.put("/description",function(req,res){
   if (!req.session.user) return res.redirect("/");
     code = "update description set contenu=? where uid="+req.session.user.uid;
     connection.query(code,[req.body.desc],function(err,row,fields){
@@ -151,7 +151,7 @@ serv.post("/description",function(req,res){
     });
 });
 
-serv.post("/preference",function(req,res){
+serv.put("/preference",function(req,res){
   if (!req.session.user) return res.redirect("/");
   var code = "update preference set age="+req.body.age+",sexe='"+req.body.sexe+"' where uid="+req.session.user.uid;
     connection.query(code,function(err,row,fields){

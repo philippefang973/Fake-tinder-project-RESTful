@@ -1,15 +1,15 @@
 import Api from '@/services/Api'
 export default {
   editPreference(info) {
-    return Api().post('preference',info)
+    return Api().put('preference',info)
   },
   editInfos(info) {
-      return Api().post('infos',info)
+      return Api().put('infos',info)
   },
   editDescription(info) {
-    return Api().post('description',info)
+    return Api().put('description',info)
   },
   updateMdp(info) {
-    return Api().post('password',info)
+    return Api().put('password',info)
   }
 }
